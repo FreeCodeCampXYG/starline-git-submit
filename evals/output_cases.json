@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {"name":"schema_governance","expect":["versioned tables","busy timeout","WAL when supported","incompatible version fails"]},
+    {"name":"credential_reference","expect":["safe governed reference accepted","credential material rejected"]},
+    {"name":"project_reassociation","expect":["exact","moved","mismatch","ambiguous"]},
+    {"name":"export_guard","expect":["outside repository","sensitive marker","non-committable"]},
+    {"name":"stage_blockers","expect":["DB/WAL/SHM blocked","export marker blocked"]},
+    {"name":"remote_selection","expect":["multiple remotes require governed selection"]},
+    {"name":"branch_plan","expect":["fetch preview not executed","concrete confirmed commit subject and modification comment","stale classification","explicit branch refspec"]},
+    {"name":"tag_plan","expect":["annotated tag","exact tag refspec","separate confirmation"]},
+    {"name":"release_record","expect":["concrete confirmed tag message","GitHub release notes","explicit gh release preview"]},
+    {"name":"repository_hygiene","expect":["missing license stops submission","explicit legal license and holder confirmation","non-overwriting GitHub Issue and PR templates","no automatic issue or PR remote mutations"]},
+    {"name":"protected_branch","expect":["policy allowance","separate exact confirmation"]},
+    {"name":"invalid_ref","expect":["no argv phases emitted"]},
+    {"name":"github_create_confirmation","expect":["exact owner","exact repository name","exact visibility","exact default branch"]},
+    {"name":"github_create_absence","expect":["authenticated gh","confirmed 404","existing and unknown targets blocked"]},
+    {"name":"github_create_boundary","expect":["single visible gh repo create command","no source or push flags","creation does not authorize push"]}
+  ]
+}

@@ -1,0 +1,411 @@
+{
+  "ok": true,
+  "threshold": 0.34,
+  "description_concepts": [
+    "git_repository",
+    "provider",
+    "safety_governance",
+    "submission_action"
+  ],
+  "missing_description_concepts": [],
+  "summary": {
+    "total": 29,
+    "passed": 29,
+    "false_positive": 0,
+    "false_negative": 0,
+    "pass_rate": 1.0
+  },
+  "failures": [],
+  "results": {
+    "should_trigger": [
+      {
+        "prompt": "Create a new public GitHub repository after I confirm the owner, name, visibility, and main branch; do not push yet.",
+        "family": "github_repo_create",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.75,
+        "matched_concepts": [
+          "git_repository",
+          "provider",
+          "submission_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "请在 GitHub 创建新仓库，创建前核对 owner、仓库名、public 可见性和 main 默认分支，已存在就停止。",
+        "family": "github_repo_create_cn",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.5,
+        "matched_concepts": [
+          "git_repository",
+          "provider"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "检查当前 Git 仓库，先同步远端，再安全 commit 并确认目标分支后 push。",
+        "family": "full_safe_submit",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.75,
+        "matched_concepts": [
+          "git_repository",
+          "safety_governance",
+          "submission_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把这些已暂存修改提交到 GitHub，推送前告诉我准确 remote 和 branch。",
+        "family": "github_submit",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.75,
+        "matched_concepts": [
+          "git_repository",
+          "provider",
+          "submission_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "公司 GitLab 需要代理，检查认证和分支冲突后给提交计划。",
+        "family": "gitlab_corporate",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "git_repository",
+          "provider",
+          "safety_governance",
+          "submission_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "这个 Gitee 项目第二次提交了，读取项目默认配置后安全推送。",
+        "family": "gitee_saved_profile",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "git_repository",
+          "provider",
+          "safety_governance",
+          "submission_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "有多个 Git remote，帮我选择并确认应该推到哪个分支。",
+        "family": "multiple_remotes",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.5,
+        "matched_concepts": [
+          "git_repository",
+          "safety_governance"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "提交当前 feature 分支并设置 upstream，但不要自动打 tag。",
+        "family": "upstream_branch",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.5,
+        "matched_concepts": [
+          "git_repository",
+          "submission_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "先检查远端是否领先；有冲突就停下来让我人工处理。",
+        "family": "conflict_stop",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.5,
+        "matched_concepts": [
+          "git_repository",
+          "safety_governance"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "为这次发布准备 v1.4.0 annotated tag，分支和 tag 分别确认。",
+        "family": "release_tag",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.75,
+        "matched_concepts": [
+          "git_repository",
+          "safety_governance",
+          "submission_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "提交 GitHub 项目前检查有没有 LICENSE，没有则确认 MIT 许可证后补齐，并建立 Issue 和 PR 模板。",
+        "family": "github_hygiene",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "git_repository",
+          "provider",
+          "safety_governance",
+          "submission_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "为 GitHub 的 v2.0.0 发版准备 tag 和完整 Release Notes，说明兼容性、风险和测试。",
+        "family": "github_release_record",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.75,
+        "matched_concepts": [
+          "git_repository",
+          "provider",
+          "submission_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "Safely commit and push this repository to GitLab using the saved project proxy profile.",
+        "family": "english_gitlab",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "git_repository",
+          "provider",
+          "safety_governance",
+          "submission_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "Inspect authentication readiness and produce an explicit branch push plan without executing it.",
+        "family": "english_plan",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.75,
+        "matched_concepts": [
+          "git_repository",
+          "safety_governance",
+          "submission_action"
+        ],
+        "negative_pattern": null
+      }
+    ],
+    "should_not_trigger": [
+      {
+        "prompt": "Create a new GitLab repository and push everything automatically.",
+        "family": "non_github_repo_create",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.75,
+        "matched_concepts": [
+          "git_repository",
+          "provider",
+          "submission_action"
+        ],
+        "negative_pattern": "Create a new GitLab repository"
+      },
+      {
+        "prompt": "Overwrite the existing GitHub repository with a new one of the same name.",
+        "family": "repository_overwrite",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.5,
+        "matched_concepts": [
+          "git_repository",
+          "provider"
+        ],
+        "negative_pattern": "Overwrite the existing GitHub repository"
+      },
+      {
+        "prompt": "解释 Git rebase 和 merge 的区别。",
+        "family": "git_explanation",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "帮我 force push 覆盖远端 main，并清理本地工作区。",
+        "family": "destructive_history",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.5,
+        "matched_concepts": [
+          "git_repository",
+          "submission_action"
+        ],
+        "negative_pattern": "force push"
+      },
+      {
+        "prompt": "只帮我写一条 Conventional Commit 提交信息文案，不检查仓库。",
+        "family": "message_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.5,
+        "matched_concepts": [
+          "git_repository",
+          "submission_action"
+        ],
+        "negative_pattern": "提交信息文案"
+      },
+      {
+        "prompt": "创建一个新的 skill 并发布到 GitHub。",
+        "family": "skill_publishing",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.5,
+        "matched_concepts": [
+          "git_repository",
+          "provider"
+        ],
+        "negative_pattern": "创建一个新的 skill"
+      },
+      {
+        "prompt": "自动关闭所有超过 30 天的 GitHub Issue 并合并没有冲突的 PR。",
+        "family": "automated_issue_pr_mutation",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.75,
+        "matched_concepts": [
+          "git_repository",
+          "provider",
+          "safety_governance"
+        ],
+        "negative_pattern": "自动关闭所有超过 30 天的 GitHub Issue"
+      },
+      {
+        "prompt": "不问我就给这个开源项目选择一个许可证并推送。",
+        "family": "unreviewed_license_choice",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.25,
+        "matched_concepts": [
+          "submission_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "克隆这个 GitLab 仓库到本地。",
+        "family": "clone_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.5,
+        "matched_concepts": [
+          "git_repository",
+          "provider"
+        ],
+        "negative_pattern": "克隆"
+      },
+      {
+        "prompt": "删除 Gitee 上的远端分支和标签。",
+        "family": "remote_delete",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.5,
+        "matched_concepts": [
+          "git_repository",
+          "provider"
+        ],
+        "negative_pattern": "删除 Gitee"
+      },
+      {
+        "prompt": "给我写一篇 Git 入门教程。",
+        "family": "tutorial",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      }
+    ],
+    "near_neighbor": [
+      {
+        "prompt": "只查看 git status 和 diff，保持完全只读。",
+        "family": "inspection_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "帮我配置全局 Git 代理，但现在不要提交或推送项目。",
+        "family": "proxy_config_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.5,
+        "matched_concepts": [
+          "safety_governance",
+          "submission_action"
+        ],
+        "negative_pattern": "配置全局 Git 代理"
+      },
+      {
+        "prompt": "当前分支已经推送，接下来只创建 GitHub PR。",
+        "family": "pr_creation_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.75,
+        "matched_concepts": [
+          "git_repository",
+          "provider",
+          "submission_action"
+        ],
+        "negative_pattern": "只创建 GitHub PR"
+      },
+      {
+        "prompt": "分析这个仓库采用 GitHub 还是 GitLab 更合适。",
+        "family": "hosting_analysis",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.5,
+        "matched_concepts": [
+          "git_repository",
+          "provider"
+        ],
+        "negative_pattern": "采用 GitHub 还是 GitLab"
+      }
+    ]
+  }
+}

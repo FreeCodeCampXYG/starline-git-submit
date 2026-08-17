@@ -1,0 +1,7 @@
+{
+  "provider": "github",
+  "auth_method": "credential-helper",
+  "credential_reference": "credential-helper:manager-core",
+  "allowed_hosts": ["github.com"],
+  "default_remote": "origin"
+}

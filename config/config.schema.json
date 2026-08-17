@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/starline-git-submit/config.schema.json",
+  "title": "Starline Git Submit profile",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "default_remote": {"type": "string", "pattern": "^[A-Za-z0-9._-]+$"},
+    "allowed_hosts": {"type": "array", "items": {"type": "string", "pattern": "^[A-Za-z0-9.-]+$"}, "uniqueItems": true},
+    "provider": {"enum": ["github", "gitlab", "gitee", "generic"]},
+    "auth_method": {"enum": ["credential-helper", "ssh-agent", "gh", "glab"]},
+    "credential_reference": {"type": "string", "pattern": "^(credential-helper|ssh-agent|gh|glab|env):[A-Za-z0-9_.-]+$"},
+    "require_clean_worktree": {"type": "boolean"},
+    "require_staged_changes": {"type": "boolean"},
+    "allow_tag_plan": {"type": "boolean"},
+    "protected_branches": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "allow_protected_branch_push": {"type": "boolean"},
+    "proxy_env": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "http": {"type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"},
+        "https": {"type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"},
+        "no_proxy": {"type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"}
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify skill package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile all sources
+        run: python -m compileall -q scripts tests
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Validate config examples
+        run: |
+          python scripts/validate_config.py config/examples/global.json
+          python scripts/validate_config.py config/examples/host-github.json
+          python scripts/validate_config.py config/examples/project.json
+
+      - name: Check for secrets
+        run: |
+          if grep -rInE "(ghp_|github_pat_|AKIA[0-9A-Z]{16}|-----BEGIN .*PRIVATE KEY-----)" --exclude-dir=.git .; then
+            echo "Secret pattern found"; exit 1
+          fi
+          echo "No secret patterns found"
+
+      - name: Verify README and manifest consistency
+        run: |
+          python - <<'EOF'
+          import json
+          m = json.load(open("manifest.json", encoding="utf-8"))
+          assert m["name"] == "starline-git-submit"
+          print(f"manifest ok: {m['name']} v{m['version']}")
+          EOF

@@ -1,0 +1,13 @@
+{
+  "default_remote": "origin",
+  "require_clean_worktree": false,
+  "require_staged_changes": true,
+  "allow_tag_plan": false,
+  "protected_branches": ["main", "master"],
+  "allow_protected_branch_push": false,
+  "proxy_env": {
+    "http": "HTTP_PROXY",
+    "https": "HTTPS_PROXY",
+    "no_proxy": "NO_PROXY"
+  }
+}

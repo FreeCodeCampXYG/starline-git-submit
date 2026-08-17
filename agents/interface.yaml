@@ -1,0 +1,33 @@
+interface:
+  display_name: "Starline Git Submit"
+  short_description: "Safely establish GitHub hygiene and plan confirmed Git delivery"
+  default_prompt: "Use $starline-git-submit to inspect a repository before delivery, stop for a missing LICENSE or GitHub Issue/PR governance files, and create only missing packaged templates after exact license, copyright-holder, and file-creation confirmations. Then produce a visible commit/push plan with a concrete subject and body. Tags require an exact explanatory annotated-tag message; GitHub tags also require separately confirmed Release notes and an explicit gh release preview. Repository creation authorizes one visible gh command only and never authorizes push. Never overwrite repositories or templates, guess a license, force, auto-stash, reset, clean, rewrite history, expose credentials, automatically label/close/comment on issues, merge PRs, publish packages, or hide mutations."
+  examples:
+    - "检查这个仓库的提交和推送条件，先给计划不要执行"
+    - "确认当前分支推送到 GitHub，检查认证和代理"
+    - "为 GitLab 分支生成提交推送计划，冲突时立即停止"
+    - "检查并补齐这个 GitHub 仓库的 LICENSE、Issue 模板和 PR 模板，先给计划"
+    - "为 v0.1.0 准备有完整变更说明的 GitHub Release，分支、tag 和 Release 分别确认"
+compatibility:
+  canonical_format: "agent-skills"
+  adapter_targets: ["openai", "claude", "generic", "agent-skills-compatible", "vscode"]
+  activation:
+    mode: "manual"
+    paths: []
+  execution:
+    context: "inline"
+    shell: "platform-neutral"
+  trust:
+    source_tier: "local"
+    remote_inline_execution: "forbid"
+    generated_public_claims: "evidence-bound"
+  permissions:
+    network: "none required for inspect/plan; GitHub repository creation planning requires gh authentication and an exact read-only existence query; confirmed execution creates one repository"
+    file_write: "external user-data SQLite config; confirmed GitHub creation writes one remote repository, while local repository writes remain separate interactive phases"
+    subprocess: "read-only git/ssh-add/provider status and existence checks; one separately confirmed gh repo create command"
+    interactive: "required before any Git mutation executed by the calling agent"
+  degradation:
+    claude: "canonical-source"
+    generic: "neutral-source"
+    agent-skills-compatible: "canonical-source"
+    vscode: "neutral-source-plus-interface"

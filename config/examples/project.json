@@ -1,0 +1,5 @@
+{
+  "require_staged_changes": true,
+  "require_clean_worktree": false,
+  "allow_tag_plan": true
+}

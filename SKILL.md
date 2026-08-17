@@ -3,7 +3,7 @@ name: starline-git-submit
 description: "Safely inspect Git delivery readiness, prepare missing LICENSE and GitHub issue/PR governance files after exact confirmation, plan confirmed commit/push/tag/Release actions, and create a new GitHub repository only after exact owner, name, visibility, and default-branch confirmation plus an absence check. Use for governed GitHub/GitLab/Gitee/generic submission, GitHub repository hygiene, release-tag documentation, or explicitly requested GitHub repository creation. Do not use for force pushes, destructive history rewrites, automatic stashing, repository overwrite, unreviewed license selection, automatic issue/PR closure or merge, non-GitHub repository creation, package publication, or opaque unattended mutation."
 metadata:
   author: Starline
-  version: "0.4.0"
+  version: "0.4.1"
 ---
 
 # Starline Git Submit

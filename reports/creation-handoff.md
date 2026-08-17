@@ -1,5 +1,9 @@
 # Creation handoff
 
+## v0.4.1
+
+README made bilingual (English + 中文) with GitHub stars/license/CI badges; version bumped from 0.4.0. Package structure, gates, and Python sources unchanged.
+
 ## v0.4.0
 
 Reference skills studied: local `starline-meta-skill` for Governed action, trust, rollback, evidence, and resource-boundary gates; remote `openclaw/openclaw:skills/github` root `SKILL.md` for its separation of local Git from GitHub CLI Issue/PR/Release work. GitHub Docs for license, Issue templates, PR templates, and Release notes were read as platform-primary references. The unified two-catalog prior-art runner could not start `npx` on this Windows environment, so cross-catalog adoption/maintenance evidence is **missing evidence**.

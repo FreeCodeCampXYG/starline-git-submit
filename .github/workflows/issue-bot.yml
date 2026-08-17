@@ -1,0 +1,43 @@
+name: Issue Bot
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  triage:
+    name: Welcome and triage new issues
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const repo = context.repo;
+            const labels = ["triage"];
+            try {
+              await github.rest.issues.addLabels({ ...repo, issue_number: issue.number, labels });
+              console.log(`Added labels: ${labels.join(", ")}`);
+            } catch (err) {
+              console.log(`Label add skipped: ${err.message}`);
+            }
+            const body = [
+              `Thanks for opening this issue, @${issue.user.login}! 👋`,
+              "",
+              "To help triage quickly:",
+              "- **Bug**: follow the [bug report template](https://github.com/FreeCodeCampXYG/starline-git-submit/issues/new?template=bug_report.yml) and include reproduction steps and environment.",
+              "- **Feature**: follow the [feature request template](https://github.com/FreeCodeCampXYG/starline-git-submit/issues/new?template=feature_request.yml) and describe the problem before the solution.",
+              "",
+              "> ⚠️ **Never paste tokens, passwords, private keys, or personal data into an issue.** This project's tooling redacts and rejects credentials by design.",
+              "",
+              "A maintainer will review this shortly. Meanwhile, please check [existing issues](https://github.com/FreeCodeCampXYG/starline-git-submit/issues) for duplicates.",
+            ].join("\n");
+            try {
+              await github.rest.issues.createComment({ ...repo, issue_number: issue.number, body });
+              console.log("Welcome comment posted.");
+            } catch (err) {
+              console.log(`Comment post skipped: ${err.message}`);
+            }
